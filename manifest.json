@@ -1,20 +1,40 @@
 {
   "name": "gptBlock",
-  "description": "A chrome extenion built to monitor ChatGpt activity.",
+  "description": "A chrome extension built to monitor ChatGPT activity.",
   "version": "1.0",
   "manifest_version": 3,
+
   "action": {
     "default_popup": "hello.html",
     "default_icon": "hello_extensions.png"
   },
+
   "background": {
     "service_worker": "service-worker.js"
   },
+
   "side_panel": {
-    "default_path": "sidepanel.html"
+    "default_path": "sidepanel.html",
+    "enabled": true
   },
-    "permissions": [
-      "sidePanel"
-    ]
-  }
-  
+
+  "permissions": [
+    "tabs",
+    "sidePanel",
+    "scripting"
+  ],
+
+  "optional_permissions": ["sidePanel"],
+
+  "host_permissions": [
+    "https://chat.openai.com/*"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["https://chat.openai.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
