@@ -1,16 +1,16 @@
-// Set the side panel to open when the action button is clicked
-chrome.sidePanel.setPanelBehavior({ openPanelOnActionClick: true });
+// background.js
+chrome.action.onClicked.addListener((tab) => {
+  // Open the side panel when the extension icon is clicked
+  chrome.sidePanel.open({ tabId: tab.id });
+});
 
 // Listen for messages from the content script
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.action === "newPrompt") {
-    // Open the side panel when a new prompt is detected
-    chrome.sidePanel.open({ windowId: sender.tab.windowId });
+  if (message.type === 'NEW_PROMPT') {
+    // Store the prompt in chrome storage
+    chrome.storage.local.set({ currentPrompt: message.prompt });
     
-    // Send the prompt to the side panel
-    chrome.runtime.sendMessage({
-      action: "updatePanel",
-      prompt: message.prompt
-    });
+    // Open the side panel
+    chrome.sidePanel.open({ tabId: sender.tab.id });
   }
 });

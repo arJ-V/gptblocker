@@ -1,23 +1,13 @@
+
 {
-  "name": "ChatGPT Prompt Sidebar",
-  "version": "1.0",
   "manifest_version": 3,
-  "description": "Opens a side panel with your prompt when you enter a new prompt on ChatGPT",
-  "permissions": [
-    "activeTab",
-    "sidePanel",
-    "scripting"
-  ],
-  "host_permissions": [
-    "https://chat.openai.com/*"
-  ],
+  "name": "ChatGPT Prompt Parser",
+  "version": "1.0",
+  "description": "Parse ChatGPT prompts into the side panel",
+  "permissions": ["sidePanel", "scripting", "storage"],
+  "host_permissions": ["https://chat.openai.com/*"],
   "action": {
-    "default_title": "ChatGPT Prompt Sidebar",
-    "default_icon": {
-      "16": "icon16.png",
-      "48": "icon48.png",
-      "128": "icon128.png"
-    }
+    "default_title": "ChatGPT Prompt Parser"
   },
   "side_panel": {
     "default_path": "sidepanel.html"
