@@ -17,8 +17,11 @@
   "permissions": [
     "sidePanel",
     "webRequest",
-    "webRequestBlocking",
-    "storage"
+    "declarativeNetRequest",
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+  "https://chat.openai.com/*"
   ]
 }
-  
