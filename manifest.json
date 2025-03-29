@@ -8,13 +8,17 @@
     "default_icon": "hello_extensions.png"
   },
   "background": {
-    "service_worker": "service-worker.js"
+    "service_worker": "service-worker.js",
+    "type": "module"
   },
   "side_panel": {
     "default_path": "sidepanel.html"
   },
-    "permissions": [
-      "sidePanel"
-    ]
-  }
+  "permissions": [
+    "sidePanel",
+    "webRequest",
+    "webRequestBlocking",
+    "storage"
+  ]
+}
   
